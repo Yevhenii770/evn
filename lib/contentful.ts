@@ -94,6 +94,30 @@ class ContentfulClient {
     };
   }
 
+  async getServicesPageContent(): Promise<ServicesPageContent> {
+    const servicesContentResponse = await this.client.getEntries({
+      content_type: "services",
+      limit: 1,
+    });
+    const servicesContent: any = servicesContentResponse.items[0].fields;
+    return {
+      seo: {
+        title: servicesContent.seo.fields.title,
+        description: servicesContent.seo.fields.description,
+      },
+      servicesSectionContent: {
+        header: servicesContent.header,
+        services: servicesContent.services.map(function (service: any) {
+          return {
+            name: service.fields.name,
+            subServices: service.fields.subServices,
+            icon: service.fields.icon,
+          };
+        }),
+      },
+    };
+  }
+
   async getWorkContent(): Promise<WorkContent> {
     const workContentResponse = await this.client.getEntries({
       content_type: "work",
@@ -275,30 +299,6 @@ class ContentfulClient {
       seo: {
         title: reviewsContent.seo.fields.title,
         description: reviewsContent.seo.fields.description,
-      },
-    };
-  }
-
-  async getServicesPageContent(): Promise<ServicesPageContent> {
-    const servicesContentResponse = await this.client.getEntries({
-      content_type: "services",
-      limit: 1,
-    });
-    const servicesContent: any = servicesContentResponse.items[0].fields;
-    return {
-      seo: {
-        title: servicesContent.seo.fields.title,
-        description: servicesContent.seo.fields.description,
-      },
-      servicesSectionContent: {
-        header: servicesContent.header,
-        services: servicesContent.services.map(function (service: any) {
-          return {
-            name: service.fields.name,
-            subServices: service.fields.subServices,
-            icon: service.fields.icon,
-          };
-        }),
       },
     };
   }

@@ -1,22 +1,22 @@
-import sgMail from '@sendgrid/mail';
-import { NextApiRequest, NextApiResponse } from 'next';
+import sgMail from "@sendgrid/mail";
+import { NextApiRequest, NextApiResponse } from "next";
 
 interface ContactRequest {
-    name: string,
-    replyTo: string,
-    message: string,
+  name: string;
+  replyTo: string;
+  message: string;
 }
 
 interface Email {
-  from: string,
-  to: string,
-  replyTo: string,
-  subject: string,
-  text: string,
+  from: string;
+  to: string;
+  replyTo: string;
+  subject: string;
+  text: string;
 }
 
 interface ErrorResponse {
-  error: string,
+  error: string;
 }
 
 const emailBotUserName = process.env.EMAIL_BOT_USERNAME!;
@@ -28,35 +28,41 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "POST") {
     const errorResponse: ErrorResponse = {
       error: "method not allowed",
-    }
+    };
     return res.status(405).json(JSON.stringify(errorResponse));
   }
-  if (req == null || req == undefined || req.body == null || req.body == undefined) {
+  if (
+    req == null ||
+    req == undefined ||
+    req.body == null ||
+    req.body == undefined
+  ) {
     const errorResponse: ErrorResponse = {
       error: "request body is required",
-    }
+    };
     return res.status(400).json(JSON.stringify(errorResponse));
   }
   const contactRequest: ContactRequest = {
     name: req.body.name,
     replyTo: req.body.email,
     message: req.body.message,
-  }
+  };
   const email: Email = {
     from: emailBotUserName,
     to: emailBotDestinationEmail,
     replyTo: contactRequest.replyTo,
-    subject: `Contact form submitted on yaymike.com by ${contactRequest.name}`,
+    subject: `Contact form submitted on handyman.info.portland@gmail.com
+ by ${contactRequest.name}`,
     text: contactRequest.message,
-  }
+  };
   try {
     await sgMail.send(email);
   } catch (e: any) {
     console.log("Unable to send email using SendGrid: ", e.message);
     const errorResponse: ErrorResponse = {
       error: "unable to send email",
-    }
+    };
     return res.status(500).json(JSON.stringify(errorResponse));
   }
-  return res.status(200).json({message: "success"});
-}
+  return res.status(200).json({ message: "success" });
+};

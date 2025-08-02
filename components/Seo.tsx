@@ -2,9 +2,10 @@ import Head from "next/head";
 import { SeoProps } from "../utils/types";
 
 export default function Seo(props: SeoProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.yaymike.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://www.evnhandyman.com";
   const canonicalUrl =
-    process.env.NEXT_PUBLIC_CANONICAL_URL || "https://www.yaymike.com";
+    process.env.NEXT_PUBLIC_CANONICAL_URL || "https://www.evnhandyman.com";
 
   return (
     <Head>

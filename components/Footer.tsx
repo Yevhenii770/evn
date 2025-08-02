@@ -43,11 +43,14 @@ export default function Footer() {
               columnGap: "10px",
             }}
           >
-            <IconButton href="mailto:mike@yaymike.com">
+            <IconButton
+              href="mailto:handyman.info.portland@gmail.com"
+              target="_blank"
+            >
               <EmailRounded color="primary" fontSize="large" />
             </IconButton>
             <IconButton
-              href="https://www.google.com/maps/place/Handyman+Mike,+LLC/@38.4062488,-78.6673493,7z/data=!4m9!1m2!2m1!1shandyman+mike+llc!3m5!1s0x2325544a6af1d5c3:0xa3d03ece8aafd053!8m2!3d37.56345!4d-77.5199244!15sChFoYW5keW1hbiBtaWtlIGxsY5IBCGhhbmR5bWFu"
+              href="https://yelp.to/DWCUdJjJlj"
               target="_blank"
               rel="noopener noreferrer"
             >
