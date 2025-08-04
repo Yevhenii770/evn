@@ -3,6 +3,7 @@ import { SeoProps } from "../utils/types";
 
 export default function Seo(props: SeoProps) {
   const baseUrl =
+    // const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL || "https://www.evnhandyman.com";
   const canonicalUrl =
     process.env.NEXT_PUBLIC_CANONICAL_URL || "https://www.evnhandyman.com";
