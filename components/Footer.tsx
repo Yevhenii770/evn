@@ -47,6 +47,7 @@ export default function Footer() {
             <IconButton
               href="mailto:handyman.info.portland@gmail.com"
               target="_blank"
+              aria-label="Send us an email"
             >
               <EmailRounded color="primary" fontSize="large" />
             </IconButton>
@@ -54,6 +55,7 @@ export default function Footer() {
               href="https://yelp.to/DWCUdJjJlj"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Yelp page"
             >
               <StoreIcon color="primary" fontSize="large" />
             </IconButton>
