@@ -3,10 +3,14 @@ import { SeoProps } from "../utils/types";
 
 export default function Seo(props: SeoProps) {
   const baseUrl =
-    // const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL || "https://www.evnhandyman.com";
   const canonicalUrl =
     process.env.NEXT_PUBLIC_CANONICAL_URL || "https://www.evnhandyman.com";
+
+  const canonicalLink =
+    !props.page || props.page === "home"
+      ? canonicalUrl
+      : `${canonicalUrl}/${props.page}`;
 
   return (
     <Head>
@@ -18,12 +22,8 @@ export default function Seo(props: SeoProps) {
         property="og:image"
         content={`${baseUrl}/handyman_evn_logo_light.png`}
       />
-      <meta property="og:url" content={`${canonicalUrl}/${props.page}`} />
-      <link
-        rel="canonical"
-        href={`${canonicalUrl}/${props.page}`}
-        key="canonical"
-      />
+      <meta property="og:url" content={canonicalLink} />
+      <link rel="canonical" href={canonicalLink} key="canonical" />
     </Head>
   );
 }
