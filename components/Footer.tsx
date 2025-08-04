@@ -1,4 +1,5 @@
 import { EmailRounded, Google } from "@mui/icons-material";
+import StoreIcon from "@mui/icons-material/Store";
 import { Typography, Box, IconButton, Container } from "@mui/material";
 import Image from "next/image";
 
@@ -54,7 +55,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Google color="primary" fontSize="large" />
+              <StoreIcon color="primary" fontSize="large" />
             </IconButton>
           </Box>
         </Box>
