@@ -20,11 +20,11 @@ export default function Seo(props: SeoProps) {
       <meta property="og:description" content={props.description} />
       <meta property="og:image" content={`${baseUrl}/favicon.ico`} />
       <meta property="og:url" content={canonicalLink} />
-      <link rel="canonical" href={canonicalLink} key="canonical" />
       <meta
         name="google-site-verification"
         content="2QWyydu_8ee9Vu8eeDv1wQ_iL3MPfIUSSB_utACksBY"
       />
+      <link rel="canonical" href={canonicalLink} key="canonical" />
     </Head>
   );
 }
