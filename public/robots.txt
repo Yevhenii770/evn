@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.evnhandyman.com
+
+# Sitemaps
+Sitemap: https://www.evnhandyman.com/sitemap.xml
