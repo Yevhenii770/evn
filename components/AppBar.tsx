@@ -111,7 +111,9 @@ export default function HideAppBar() {
                   width="68.59"
                   height="55"
                 />
-                <Typography variant="h5">Handyman Yevhenii (EVN)</Typography>
+                <Typography variant="h5">
+                  Handyman Yevhenii (EVN) LLC
+                </Typography>
               </Box>
               <Box
                 component="nav"
