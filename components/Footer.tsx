@@ -1,5 +1,6 @@
-import { EmailRounded, Google } from "@mui/icons-material";
+import { EmailRounded } from "@mui/icons-material";
 import StoreIcon from "@mui/icons-material/Store";
+import FacebookIcon from "@mui/icons-material/Facebook";
 import { Typography, Box, IconButton, Container } from "@mui/material";
 import Image from "next/image";
 
@@ -50,6 +51,14 @@ export default function Footer() {
               aria-label="Send us an email"
             >
               <EmailRounded color="primary" fontSize="large" />
+            </IconButton>
+            <IconButton
+              href="https://www.facebook.com/profile.php?id=61568265928694"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Yelp page"
+            >
+              <FacebookIcon color="primary" fontSize="large" />
             </IconButton>
             <IconButton
               href="https://yelp.to/DWCUdJjJlj"
