@@ -12,6 +12,29 @@ export default function Seo(props: SeoProps) {
       ? canonicalUrl
       : `${canonicalUrl}/${props.page}`;
 
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "EVN Handyman",
+    image: `${baseUrl}/handyman_evn_logo_light.png`,
+    url: canonicalUrl,
+    telephone: "+1-503-422-0863",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Portland",
+      addressRegion: "OR",
+      postalCode: "97232",
+      addressCountry: "US",
+    },
+    description:
+      "EVN Handyman provides reliable handyman services in Portland and Beaverton: TV mounting, painting, drywall, and more.",
+    priceRange: "$$",
+    areaServed: {
+      "@type": "Place",
+      name: "Portland, Beaverton",
+    },
+  };
+
   return (
     <Head>
       <title>{props.title}</title>
@@ -25,6 +48,10 @@ export default function Seo(props: SeoProps) {
         content="2QWyydu_8ee9Vu8eeDv1wQ_iL3MPfIUSSB_utACksBY"
       />
       <link rel="canonical" href={canonicalLink} key="canonical" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
     </Head>
   );
 }
