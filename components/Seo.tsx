@@ -31,7 +31,7 @@ export default function Seo(props: SeoProps) {
     priceRange: "$$",
     areaServed: {
       "@type": "Place",
-      name: "Portland, Beaverton",
+      name: "Portland, Beaverton, Lake Oswego, Tigard, Hillsboro, Aloha, Cedar Mill, Tualatin, West Linn, Oregon City, Milwaukie, Happy Valley, Clackamas",
     },
   };
 
