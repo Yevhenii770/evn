@@ -53,10 +53,10 @@ export default function Footer() {
               <EmailRounded color="primary" fontSize="large" />
             </IconButton>
             <IconButton
-              href="https://www.facebook.com/profile.php?id=61568265928694"
+              href="https://www.facebook.com/share/1AznZ2QwJo/?mibextid=wwXIfr"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Yelp page"
+              aria-label="Facebook page"
             >
               <FacebookIcon color="primary" fontSize="large" />
             </IconButton>
