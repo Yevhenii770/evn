@@ -7,70 +7,68 @@ const PADDING: string = "12px";
 export default function HeroSection(props: HomeContent) {
   return (
     <Container>
-      <Box sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        minHeight: "90vh",
-      }}>
-          <Typography 
-            variant="h1" 
-            sx={{
-                fontWeight: "700",
-                color: "primary.main",
-                paddingTop: PADDING,
-                paddingBottom: PADDING
-            }}
-          >
-            {props.headline}
-          </Typography>
-          <Typography 
-            variant="h4"
-            component="h2"
-            sx={{
-                paddingTop: PADDING,
-                paddingBottom: PADDING,
-                fontWeight: "500"
-            }}
-          >
-              {props.subHeadline}
-          </Typography>
-          <Typography  
-            paragraph
-            sx={{
-                paddingTop: PADDING,
-                paddingBottom: PADDING,
-                fontSize: "1.1rem"
-            }}
-          >
-              {props.heroText}
-          </Typography>
-          <Box sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              gap: PADDING,
-          }}>
-              <Link href={"/about"} passHref>
-                  <Button
-                    component="a"
-                    variant="outlined"
-                    size="large"
-                  >
-                      {props.subCallToActionButtonText}
-                  </Button>
-              </Link>
-              <Link href={"/contact"} passHref>
-                  <Button
-                    component="a"
-                    variant="contained"
-                    size="large"
-                  >
-                      {props.callToActionButtonText}
-                  </Button>
-              </Link>
-          </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          minHeight: "90vh",
+        }}
+      >
+        <Typography
+          variant="h1"
+          sx={{
+            fontWeight: "700",
+            color: "primary.main",
+            paddingTop: PADDING,
+            paddingBottom: PADDING,
+            fontSize: { xs: "2rem", md: "2.8rem" },
+          }}
+        >
+          {props.headline}
+        </Typography>
+        <Typography
+          variant="h4"
+          component="h2"
+          sx={{
+            paddingTop: PADDING,
+            paddingBottom: PADDING,
+            fontWeight: "500",
+            fontSize: { xs: "1.5rem", md: "1.7rem" },
+          }}
+        >
+          {props.subHeadline}
+        </Typography>
+        <Typography
+          paragraph
+          sx={{
+            paddingTop: PADDING,
+            paddingBottom: PADDING,
+            fontSize: "1.1rem",
+          }}
+        >
+          {props.heroText}
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-end",
+            gap: PADDING,
+          }}
+        >
+          <Link href={"/about"} passHref>
+            <Button component="a" variant="outlined" size="large">
+              {props.subCallToActionButtonText}
+            </Button>
+          </Link>
+          <Link href={"/contact"} passHref>
+            <Button component="a" variant="contained" size="large">
+              {props.callToActionButtonText}
+            </Button>
+          </Link>
+        </Box>
       </Box>
     </Container>
-  )
+  );
 }
