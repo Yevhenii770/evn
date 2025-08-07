@@ -41,7 +41,10 @@ export default function Seo(props: SeoProps) {
       <meta name="description" content={props.description} key="desc" />
       <meta property="og:title" content={props.title} />
       <meta property="og:description" content={props.description} />
-      <meta property="og:image" content={`${baseUrl}/favicon.ico`} />
+      <meta
+        property="og:image"
+        content={`${baseUrl}/handyman_evn_logo_light.png`}
+      />
       <meta property="og:url" content={canonicalLink} />
       <meta
         name="google-site-verification"
