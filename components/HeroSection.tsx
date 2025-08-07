@@ -22,7 +22,7 @@ export default function HeroSection(props: HomeContent) {
             color: "primary.main",
             paddingTop: PADDING,
             paddingBottom: PADDING,
-            fontSize: { xs: "2rem", md: "2.8rem" },
+            fontSize: { xs: "1.8rem", md: "2.5rem" },
           }}
         >
           {props.headline}
@@ -34,7 +34,7 @@ export default function HeroSection(props: HomeContent) {
             paddingTop: PADDING,
             paddingBottom: PADDING,
             fontWeight: "500",
-            fontSize: { xs: "1.5rem", md: "1.7rem" },
+            fontSize: { xs: "1.2rem", md: "1.6rem" },
           }}
         >
           {props.subHeadline}
