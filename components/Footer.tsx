@@ -27,8 +27,8 @@ export default function Footer() {
           <Image
             src="/handyman_evn_logo_light.png"
             alt="Handyman EVN Logo"
-            width="120"
-            height="80"
+            width="123.46"
+            height="99"
           />
           <Typography
             paragraph

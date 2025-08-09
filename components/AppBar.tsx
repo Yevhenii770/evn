@@ -108,8 +108,8 @@ export default function HideAppBar() {
                 <Image
                   src="/handyman_evn_logo_light.png"
                   alt="Handyman EVN Logo"
-                  width="68.59"
-                  height="55"
+                  width="82.31"
+                  height="66.85"
                 />
                 <Typography variant="h5">
                   Handyman Yevhenii (EVN) LLC
@@ -151,8 +151,8 @@ export default function HideAppBar() {
                 <Image
                   src="/handyman_evn_logo_light.png"
                   alt="Handyman EVN Logo"
-                  width="120"
-                  height="70"
+                  width="123.46"
+                  height="99"
                 />
               </Box>
               <Box
