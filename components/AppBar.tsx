@@ -151,8 +151,8 @@ export default function HideAppBar() {
                 <Image
                   src="/handyman_evn_logo_light.png"
                   alt="Handyman EVN Logo"
-                  width="123.46"
-                  height="99"
+                  width="100"
+                  height="70"
                 />
               </Box>
               <Box
