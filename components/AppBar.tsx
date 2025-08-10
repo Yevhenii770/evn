@@ -108,6 +108,7 @@ export default function HideAppBar() {
                 <Image
                   src="/handyman_evn_logo_light.png"
                   alt="Handyman EVN Logo"
+                  title="EVN Handyman - Professional Handyman Services in Portland"
                   width="82.31"
                   height="66.85"
                 />
@@ -151,6 +152,7 @@ export default function HideAppBar() {
                 <Image
                   src="/handyman_evn_logo_light.png"
                   alt="Handyman EVN Logo"
+                  title="EVN Handyman - Professional Handyman Services in Portland"
                   width="100"
                   height="70"
                 />

@@ -27,6 +27,7 @@ export default function Footer() {
           <Image
             src="/handyman_evn_logo_light.png"
             alt="Handyman EVN Logo"
+            title="EVN Handyman - Professional Handyman Services in Portland"
             width="100"
             height="70"
           />
