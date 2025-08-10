@@ -5,6 +5,16 @@ const nextConfig = {
   images: {
     domains: ["images.ctfassets.net"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "evnhandyman.com" }],
+        destination: "https://www.evnhandyman.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
