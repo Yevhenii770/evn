@@ -47,13 +47,15 @@ export default function Footer() {
             }}
           >
             <IconButton
-              href="mailto:handyman.info.portland@gmail.com"
+              component="a"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=handyman.info.portland@gmail.com"
               target="_blank"
               aria-label="Send us an email"
             >
               <EmailRounded color="primary" fontSize="large" />
             </IconButton>
             <IconButton
+              component="a"
               href="https://www.facebook.com/share/1AznZ2QwJo/?mibextid=wwXIfr"
               target="_blank"
               rel="noopener noreferrer"
@@ -62,6 +64,7 @@ export default function Footer() {
               <FacebookIcon color="primary" fontSize="large" />
             </IconButton>
             <IconButton
+              component="a"
               href="https://yelp.to/DWCUdJjJlj"
               target="_blank"
               rel="noopener noreferrer"
