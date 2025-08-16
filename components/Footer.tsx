@@ -5,14 +5,6 @@ import { Typography, Box, IconButton, Container } from "@mui/material";
 import Image from "next/image";
 
 export default function Footer() {
-  const isMobile =
-    typeof navigator !== "undefined" &&
-    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  const emailHref = isMobile
-    ? "mailto:handyman.info.portland@gmail.com"
-    : "https://mail.google.com/mail/?view=cm&fs=1&to=handyman.info.portland@gmail.com";
-
   return (
     <Box
       sx={{
@@ -56,11 +48,8 @@ export default function Footer() {
           >
             <IconButton
               component="a"
-              href={emailHref}
+              href="mailto:handyman.info.portland@gmail.com"
               aria-label="Send us an email"
-              {...(!isMobile
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
             >
               <EmailRounded color="primary" fontSize="large" />
             </IconButton>
