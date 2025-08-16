@@ -3,6 +3,7 @@ import StoreIcon from "@mui/icons-material/Store";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { Typography, Box, IconButton, Container } from "@mui/material";
 import Image from "next/image";
+import { Timestamp } from "./ui/Timestamp";
 
 export default function Footer() {
   return (
@@ -38,7 +39,7 @@ export default function Footer() {
               marginBottom: 0,
             }}
           >
-            Copyright © 2025 EVN Handyman
+            Copyright © <Timestamp /> EVN Handyman
           </Typography>
           <Box
             sx={{
