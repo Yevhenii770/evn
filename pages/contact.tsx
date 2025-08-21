@@ -199,14 +199,14 @@ export default function Contact(props: ContactContent) {
                     </Box>
                 </Box>
                 {formSubmittedSuccess && (
-                    <Snackbar open autoHideDuration={6000} onClose={handleSnackbarClose}>
+                    <Snackbar open autoHideDuration={2000} onClose={handleSnackbarClose}>
                         <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
                             Contact form submitted.
                         </Alert>
                     </Snackbar>
                 )}
                 {formSubmittedError && (
-                    <Snackbar open autoHideDuration={6000} onClose={handleSnackbarClose}>
+                    <Snackbar open autoHideDuration={2000} onClose={handleSnackbarClose}>
                         <Alert onClose={handleSnackbarClose} severity="error" sx={{ width: '100%' }}>
                             An error occurred submitting the contact form.
                         </Alert>
