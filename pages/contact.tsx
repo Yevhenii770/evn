@@ -107,7 +107,7 @@ export default function Contact(props: ContactContent) {
                 setFormSubmittedSuccess(true);
                 resetForm();
             } catch (e: any) {
-                console.log("unable to send email to server ", e.message);
+                // console.log("unable to send email to server ", e.message);
                 setFormSubmittedError(true);
             } finally {
                 setIsLoading(false);
@@ -225,7 +225,7 @@ export const getStaticProps: GetStaticProps = async context => {
           props: contactContent
         }
     } catch(e: any) {
-        console.log(`error retrieving contact content from contentful: ${e.message}`);
+        // console.log(`error retrieving contact content from contentful: ${e.message}`);
         throw e;
     }
 }

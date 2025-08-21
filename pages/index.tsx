@@ -90,7 +90,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       props: result,
     };
   } catch (e: any) {
-    console.log(`error retrieving home content from contentful: ${e.message}`);
+    // console.log(`error retrieving home content from contentful: ${e.message}`);
     throw e;
   }
 };

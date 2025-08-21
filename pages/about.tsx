@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       props: aboutContent,
     };
   } catch (e: any) {
-    console.log(`error retrieving about content from contentful: ${e.message}`);
+    // console.log(`error retrieving about content from contentful: ${e.message}`);
     throw e;
   }
 };
