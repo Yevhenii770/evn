@@ -1,10 +1,21 @@
+import dynamic from "next/dynamic";
 import SectionContainer from "../components/SectionContainer";
+import SectionHeader from "../components/SectionHeader";
+import Seo from "../components/Seo";
 import type { GetStaticProps } from "next";
 import { ContentfulClientFactory } from "../lib/contentful";
 import { WorkBeforeAfter, WorkContent } from "../utils/types";
-import SectionHeader from "../components/SectionHeader";
-import WorkProject from "../components/WorkProject";
-import Seo from "../components/Seo";
+
+
+const WorkProject = dynamic(() => import("../components/WorkProject"), {
+  ssr: false,
+  loading: () => <p>Loading projects...</p>,
+});
+
+const WorkCarousel = dynamic(() => import("../components/WorkCarousel"), {
+  ssr: false,
+  loading: () => <p>Loading gallery...</p>,
+});
 
 const Work = (props: WorkContent) => {
   return (
@@ -14,34 +25,32 @@ const Work = (props: WorkContent) => {
         description={props.seo.description}
         page="work"
       />
+
       <SectionContainer>
         <SectionHeader name={props.title} component="h1" />
-        {props.workBeforeAfter.map(function (item: WorkBeforeAfter) {
-          return (
-            <WorkProject
-              key={item.projectName}
-              projectName={item.projectName}
-              beforeMedia={item.beforeMedia}
-              afterMedia={item.afterMedia}
-            />
-          );
-        })}
+
+
+        <WorkCarousel />
+
+
+        {props.workBeforeAfter.map((item: WorkBeforeAfter) => (
+          <WorkProject
+            key={item.projectName}
+            projectName={item.projectName}
+            beforeMedia={item.beforeMedia}
+            afterMedia={item.afterMedia}
+          />
+        ))}
       </SectionContainer>
     </>
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const contentfulClient = await ContentfulClientFactory.getInstance();
-  try {
-    const workContent: WorkContent = await contentfulClient.getWorkContent();
-    return {
-      props: workContent,
-    };
-  } catch (e: any) {
-    // console.log(`error retrieving work content from contentful: ${e.message}`);
-    throw e;
-  }
+  const workContent: WorkContent = await contentfulClient.getWorkContent();
+
+  return { props: workContent };
 };
 
 export default Work;
