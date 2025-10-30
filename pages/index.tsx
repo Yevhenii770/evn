@@ -1,20 +1,20 @@
-import dynamic from 'next/dynamic';
 import { Box, Typography, Button } from "@mui/material";
 import type { GetStaticProps } from "next";
-import Seo from "../components/Seo";
+import HeroSection from "../components/HeroSection";
+import ReviewCard from "../components/ReviewCard";
 import SectionHeader from "../components/SectionHeader";
+import Seo from "../components/Seo";
 import { ContentfulClientFactory } from "../lib/contentful";
 import { HomeContent, HomeProps, ReviewCardContent } from "../utils/types";
-
-
-const HeroSection = dynamic(() => import("../components/HeroSection"), { ssr: false });
-const ReviewCard = dynamic(() => import("../components/ReviewCard"), { ssr: false });
 
 const Home = (props: HomeProps) => {
   return (
     <>
-      <Seo title={props.seo.title} description={props.seo.description} page="" />
-
+      <Seo
+        title={props.seo.title}
+        description={props.seo.description}
+        page=""
+      />
       <HeroSection
         headline={props.headline}
         subHeadline={props.subHeadline}
@@ -24,28 +24,30 @@ const Home = (props: HomeProps) => {
         seo={props.seo}
         leaveReviewCallToAction={props.leaveReviewCallToAction}
       />
-
       <SectionHeader name="Recent Reviews" component="h2" />
-
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "1fr 1fr",
+          },
           justifyContent: "center",
           gridGap: "35px",
           marginBottom: "40px",
         }}
       >
-        {props.recentReviews.map((review: ReviewCardContent) => (
-          <ReviewCard
-            key={review.firstName}
-            firstName={review.firstName}
-            stars={review.stars}
-            review={review.review}
-          />
-        ))}
+        {props.recentReviews.map(function (review: ReviewCardContent) {
+          return (
+            <ReviewCard
+              key={review.firstName}
+              firstName={review.firstName}
+              stars={review.stars}
+              review={review.review}
+            />
+          );
+        })}
       </Box>
-
       <Box
         sx={{
           display: "flex",
@@ -60,7 +62,6 @@ const Home = (props: HomeProps) => {
         <Typography variant="h5" component="h3" textAlign="center">
           {props.leaveReviewCallToAction}
         </Typography>
-
         <Button
           component="a"
           variant="contained"
@@ -75,17 +76,23 @@ const Home = (props: HomeProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const contentfulClient = await ContentfulClientFactory.getInstance();
-  const homeContent: HomeContent = await contentfulClient.getHomeContent();
-  const recentReviews: ReviewCardContent[] = contentfulClient.getFakeReviewData();
-
-  return {
-    props: {
+  try {
+    const homeContent: HomeContent = await contentfulClient.getHomeContent();
+    const recentReviews: ReviewCardContent[] =
+      contentfulClient.getFakeReviewData();
+    const result: HomeProps = {
       ...homeContent,
       recentReviews: recentReviews.slice(recentReviews.length - 4),
-    },
-  };
+    };
+    return {
+      props: result,
+    };
+  } catch (e: any) {
+    // console.log(`error retrieving home content from contentful: ${e.message}`);
+    throw e;
+  }
 };
 
 export default Home;

@@ -9,118 +9,78 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { ContentfulMedia, WorkCarouselContent } from '../utils/types';
 import Image from 'next/image';
-import Skeleton from '@mui/material/Skeleton';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-function WorkCarousel({ media = [], isBefore }: WorkCarouselContent) {
+function WorkCarousel(props: WorkCarouselContent) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const [isLoaded, setIsLoaded] = React.useState(false);
-  const maxSteps = media.length;
+  const maxSteps = props.media.length;
 
   const handleNext = () => {
-    setActiveStep((prev) => (prev + 1) % maxSteps);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1 % maxSteps);
   };
 
   const handleBack = () => {
-    setActiveStep((prev) => (prev === 0 ? maxSteps - 1 : prev - 1));
+    setActiveStep((prevActiveStep) => prevActiveStep - 1 % maxSteps);
   };
 
-  const handleStepChange = (step: number) => setActiveStep(step);
-
-
-  if (!media || maxSteps === 0) return null;
+  const handleStepChange = (step: number) => {
+    setActiveStep(step);
+  };
 
   return (
-    <Box sx={{ maxWidth: 600, flexGrow: 1 }}>
-      <Box
-        sx={{
+    <Box sx={{ maxWidth: 600, flexGrow: 1, flex: 1 }}>
+      <Box sx={{
           height: 400,
           display: 'block',
           maxWidth: 600,
           overflow: 'hidden',
           width: '100%',
-          position: 'relative',
-          backgroundColor: 'rgba(0, 0, 0, 0.2)',
-          borderRadius: 2,
-        }}
-      >
-      
-        <Box
-          sx={{
-            backgroundColor: 'rgba(0, 0, 0, 0.6)',
-            position: 'absolute',
+          position: "relative",
+          backgroundColor: "rgba(0, 0, 0, 0.2)",
+      }}>
+        <Box sx={{
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
+            position: "absolute",
             bottom: 0,
-            width: '100%',
-            color: 'white',
+            width: "100%",
+            color: "white",
             zIndex: 1,
-            padding: '5px',
-            textAlign: 'center',
-            fontSize: '1rem',
-          }}
-        >
-          {isBefore ? 'Before' : 'After'}
+            padding: "5px"
+        }}>
+            {props.isBefore ? "Before" : "After"}
         </Box>
-
-       
         <AutoPlaySwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={activeStep}
-          onChangeIndex={handleStepChange}
-          enableMouseEvents
+            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+            index={activeStep}
+            onChangeIndex={handleStepChange}
+            enableMouseEvents
         >
-          {media.map((item: ContentfulMedia, index) => (
-            <Box
-              key={index}
-              sx={{
-                height: 400,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                overflow: 'hidden',
-                width: '100%',
-                position: 'relative',
-              }}
-            >
-        
-              {!isLoaded && (
-                <Skeleton
-                  variant="rectangular"
-                  width={600}
-                  height={400}
-                  animation="wave"
-                  sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                  }}
-                />
-              )}
-
-              <Image
-                alt={item.title || 'Work image'}
-                src={`https:${item.url}`}
-                width={600}
-                height={400}
-                quality={90}
-                style={{
-                  objectFit: 'contain',
-                  opacity: isLoaded ? 1 : 0,
-                  transition: 'opacity 0.5s ease',
-                }}
-                onLoadingComplete={() => setIsLoaded(true)}
-                placeholder="blur"
-                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8kMpQDwAFeAHWPyptaQAAAABJRU5ErkJggg=="
-              />
-            </Box>
-          ))}
+            {props.media.map(function(media: ContentfulMedia, index) {
+                return (
+                  <Box sx={{
+                    height: 400,
+                    display: "flex",
+                    maxWidth: 500,
+                    overflow: "hidden",
+                    width: "100%"
+                  }}>
+                    <Image
+                        alt={media.title} 
+                        src={`https:${media.url}`}
+                        width={600}
+                        height={400}
+                        objectFit="contain"
+                        quality={100}
+                        placeholder="blur"
+                        blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8kMpQDwAFeAHWPyptaQAAAABJRU5ErkJggg=='
+                    />
+                  </Box>
+                )
+            })}
         </AutoPlaySwipeableViews>
       </Box>
-
-  
       <MobileStepper
         steps={maxSteps}
         position="static"
