@@ -60,8 +60,8 @@ export interface WorkContent {
 }
 
 export interface WorkCarouselContent {
-    isBefore: boolean,
-    media: ContentfulMedia[],
+    isBefore?: boolean,
+    media?: ContentfulMedia[],
 }
 
 export interface SeoContent {
